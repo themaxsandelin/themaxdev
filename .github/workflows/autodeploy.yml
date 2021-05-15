@@ -27,5 +27,5 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_MESSAGE: ${{ github.event.head_commit.message }}
         with:
-          args: deploy --dir=public --prod
+          args: deploy --dir=public --prod --mesage="Test message"
           secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
