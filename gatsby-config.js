@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Max Sandelin - Software Engineer`,
-    description: ``,
+    description: `I'm a software engineer working with web technologies for Ellos Group. I specialize in frontend development, but am currently focusing on cloud architecture and devops.`,
     author: `Max Sandelin`,
   },
   plugins: [
@@ -37,7 +37,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Inter:400,500,700']
+          families: ['Inter:400,500,700&display=swap']
         }
       }
     }
