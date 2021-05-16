@@ -27,7 +27,9 @@ const Article = ({ pageContext }) => {
     <Layout>
       <article className="Article">
         <Seo title={ article.title } />
-        <Img className="Article__cover-image" fluid={article.coverImage.fluid} alt={article.coverImage.title} placeholder="blurred" />
+        {article.coverImage &&
+          <Img className="Article__cover-image" fluid={article.coverImage.fluid} alt={article.coverImage.title} placeholder="blurred" />
+        }
         <h1>{ article.title }</h1>
         <div className="Article__content">
           { renderRichText(article.content, options) }

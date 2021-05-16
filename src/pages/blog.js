@@ -30,8 +30,6 @@ const BlogPage = () => {
     ...edge.node,
   }));
 
-  console.log(articles[1].coverImage);
-
   return (
     <Layout>
       <Seo title="Blog" />
