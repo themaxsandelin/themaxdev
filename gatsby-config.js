@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Max Sandelin - Software Engineer`,
@@ -40,6 +44,15 @@ module.exports = {
           families: ['Inter:400,500,700&display=swap']
         }
       }
-    }
+    },
+    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
+      },
+    },
   ],
 }
