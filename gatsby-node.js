@@ -3,7 +3,7 @@ const path = require('path');
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
-  const articleTemplate = path.resolve('src/templates/article.js');
+  const articleTemplate = path.resolve('src/templates/article/index.js');
 
   const articleResults = await graphql(`
     query ArticlesQuery {
@@ -14,8 +14,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             title
             slug
             coverImage {
-              fluid(maxWidth: 1200) {
-                srcSetWebp
+              title
+              fluid(maxWidth: 960) {
+                base64
+                aspectRatio
+                sizes
+                srcSet
+                src
               }
             }
             content {

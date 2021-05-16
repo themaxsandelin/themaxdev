@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 import Layout from '../layouts/Layout';
 import Seo from '../components/atoms/Seo';
@@ -13,6 +14,12 @@ const BlogPage = () => {
             slug
             title
             createdAt
+            coverImage {
+              title
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+              }
+            }
           }
         }
       }
@@ -21,9 +28,9 @@ const BlogPage = () => {
 
   const articles = data.allContentfulArticle.edges.map(edge => ({
     ...edge.node,
-    content: edge.node.content?.content,
-    coverImage: edge.node.coverImage?.file?.url,
   }));
+
+  console.log(articles[1].coverImage);
 
   return (
     <Layout>
@@ -35,7 +42,12 @@ const BlogPage = () => {
         {articles.map((article, i) => {
           return (
             <li key={`article-${i}`}>
-              <Link to={`/blog/${article.slug}`}>{article.title}</Link>
+              <Link to={`/blog/${article.slug}`}>
+                {article.coverImage &&
+                  <Img fluid={article.coverImage.fluid} alt={article.coverImage.title} />
+                }
+                {article.title}
+              </Link>
             </li>
           );
         })}
